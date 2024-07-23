@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <form id="login-form">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <label for="subTitle">subTitle:</label>
+        <input type="text" id="subTitle" name="subTitle" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let title = document.getElementById("title").value;
+            let password = document.getElementById("password").value;
+            let subTitle = document.getElementById("subTitle").value;
+
+            //Create an object to hold the data
+            let data = {
+                title: title,
+                password: password,
+                subTitle: subTitle
+            };
+            //data 객체를 JSON으로
+            let jsonData = JSON.stringify(data);
+
+            let encodedJsonData = encodeURI(jsonData);
+            let uri = `test://${encodedJsonData}`;
+            
+            console.log(uri);
+            // Redirect to the URI
+            window.location.href = uri;
+        });
+    </script>
+</body>
+</html>
