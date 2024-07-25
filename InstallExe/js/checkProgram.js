@@ -1,7 +1,8 @@
 // 프로토콜(uri scheme)
-var protocol = 'ztest://';
+var protocol = 'webautomationlogin://';
 
 var installPageUrl = 'http://127.0.0.1:5500/InstallExe/install.html';
+var loginPageUrl = 'http://127.0.0.1:5500/InstallExe/login.html';
 
 function checkProgramInstalled() {
   var timeout = 2000;         // 최대 대기 시간 (2초)
@@ -23,5 +24,6 @@ function checkProgramInstalled() {
     clearTimeout(timeoutHandler);
     document.body.removeChild(iframe);
     alert('프로그램이 설치되어 있습니다.');
+    window.location.href = loginPageUrl;
   }, { once: true });
 }
